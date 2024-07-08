@@ -779,7 +779,7 @@ PremiumOnly = <bool> - Makes the tab accessible to Sirus Premium users only.
 ]]
 
 Tab:AddButton({
-	Name = "Red Gui",
+	Name = "Red Gui(fix)",
 	Callback = function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/RedZenXYZ/RedHub/main/Red_GuiScript"))()
 
@@ -1149,7 +1149,6 @@ function getPlayer(String, Information)
 	
 	return Found    
 end
-
       		print("button pressed")
   	end    
 })
