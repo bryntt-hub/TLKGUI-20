@@ -1,4 +1,26 @@
-local player = game.Players.LocalPlayer local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))() local Window = OrionLib:MakeWindow({Name = "Bryntt's Gui", HidePremium = false, SaveConfig = true, ConfigFolder = "BrynttConfig"}) local Tab = Window:MakeTab({ 	Name = "Main", 	Icon = "rbxassetid://4483345998", 	PremiumOnly = false }) local PlayerTab = Window:MakeTab({ 	Name = "LocalPlayer", 	Icon = "rbxassetid://4483345998", 	PremiumOnly = false })  Tab:AddButton({ 	Name = "No Cooldown", 	Callback = function() g = hookfunction(wait, function(seconds) return g(0) end) 		print("button pressed") 	end }) Tab:AddButton({ 	Name = "Auto Grab Food", 	Callback = function() while wait(0.5) do fireclickdetector(game.Workspace.Food.Main.ClickDetector) end 		print("button pressed") 	end }) Tab:AddButton({ 	Name = "Drop Flashlight", 	Callback = function() local lp = game:FindFirstChildOfClass("Players").LocalPlayer
+local player = game.Players.LocalPlayer local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))() local Window = OrionLib:MakeWindow({Name = "Bryntt's Gui", HidePremium = false, SaveConfig = true, ConfigFolder = "BrynttConfig"}) local Tab = Window:MakeTab({ 	Name = "Main", 	Icon = "rbxassetid://4483345998", 	PremiumOnly = false }) local PlayerTab = Window:MakeTab({ 	Name = "LocalPlayer", 	Icon = "rbxassetid://4483345998", 	PremiumOnly = false })  Tab:AddButton({ 	Name = "No Cooldown", 	Callback = function() g = hookfunction(wait, function(seconds) return g(0) end) 		print("button pressed")  end }) Tab:AddButton({
+	Name = "Auto Heal",
+	Callback = function()
+Autoheal = true
+plr = game:FindFirstChildOfClass("Players").LocalPlayer
+    while Autoheal and wait(0.5) do
+        local hp = plr.character.Humanoid.Health
+        if hp ~= 100 then
+            local food = plr.Backpack:FindFirstChild("Food")
+            local old = plr.character:FindFirstChildOfClass("Tool")
+            
+            plr.character.Humanoid:EquipTool(food)
+            plr.character.Food:Activate()
+            
+            wait()
+            
+            if old ~= nil then
+                plr.character.Humanoid:EquipTool(old)
+                end
+            end
+        end
+      		print("Autoheal On") 	end })
+ Tab:AddButton({ 	Name = "Auto Grab Food", 	Callback = function() while wait(0.5) do fireclickdetector(game.Workspace.Food.Main.ClickDetector) end 		print("Loop Get Food On") 	end }) Tab:AddButton({ 	Name = "Drop Flashlight", 	Callback = function() local lp = game:FindFirstChildOfClass("Players").LocalPlayer
 for i=1,20 do
 fireclickdetector(workspace["Flashlight"].ClickDetector)
 for i,v in lp.Backpack:GetChildren() do if v.Name=="Flashlight" then
@@ -9,7 +31,7 @@ wait()
 for i,v in lp.Character:GetChildren() do if v.Name=="Flashlight" then
         v.Parent = workspace
 end end
-end print("button pressed") 	end }) Tab:AddButton({
+end print("Drop Flashlight") 	end }) Tab:AddButton({
 	Name = "Drop Food",
 	Callback = function()
 
@@ -26,12 +48,61 @@ for i,v in lp.Character:GetChildren() do if v.Name=="Food" then
 end end
 end
 
-      		print("button pressed")
+      		print("Dropped Food")
   	end    
 }) 
-Tab:AddButton({ 	Name = "Lag Server(go in first person to reduce lag)", 	Callback = function() game:FindFirstChildOfClass("RunService").Heartbeat:Connect(function() local args = { [1] = 46, [2] = 13352926142, [3] = "Bobux Blaster", [4] = "13352926142" } game:GetService("ReplicatedStorage"):WaitForChild("Import"):FireServer(unpack(args)) end) 		print("button pressed") 	end }) local Tab = Window:MakeTab({ 	Name = "Player", 	Icon = "rbxassetid://4483345998", 	PremiumOnly = false }) PlayerTab:AddSlider({ Name = "Walkspeed", Min = 16, Max = 500, Default = 16, Color = Color3.fromRGB(255,255,255), Increment = 1, ValueName = "WS", Callback = function(Value) game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value end }) local Tab = Window:MakeTab({ 	Name = "Other", 	Icon = "rbxassetid://4483345998", 	PremiumOnly = false }) Tab:AddButton({ 	Name = "Spam Taser Bullet(fe hold taser)", 	Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/bryntt-hub/Tase-Script/main/lua"))() 		print("button pressed") 	end }) Tab:AddButton({ 	Name = "Remove Axe", 	Callback = function() game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Workspace.Axe) 		print("button pressed") 	end }) Tab:AddButton({ 	Name = "Remove Crowbar", 	Callback = function() game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Workspace.Crowbar) 		print("button pressed") 	end }) Tab:AddButton({ 	Name = "Remove Keycard", 	Callback = function() game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Workspace.KeyCard) 		print("button pressed") 	end }) Tab:AddButton({ 	Name = "Remove Bag", 	Callback = function() game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Workspace.Bag) 		print("button pressed") 	end }) Tab:AddButton({ 	Name = "Remove Pickaxe", 	Callback = function() game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Workspace.Pickaxe) 		print("button pressed") 	end }) local Tab = Window:MakeTab({ 	Name = "Other TLK Gui's", 	Icon = "rbxassetid://4483345998", 	PremiumOnly = false }) Tab:AddButton({ 	Name = "Zeouron(My Friend's Gui)", 	Callback = function() loadstring(game:HttpGet('https://raw.githubusercontent.com/voidy434343/Zeouron-Mainiatic/main/Tlk%20prison%20obf.txt'))() 		print("button pressed") 	end }) Tab:AddButton({ 	Name = "Red Gui", 	Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/bryntt-hub/Red-Gui/main/Red"))() 		print("button pressed") 	end }) Tab:AddButton({
-	Name = "Button!",
+Tab:AddButton({ 	Name = "Lag Server(go in first person to reduce lag)", 	Callback = function() game:FindFirstChildOfClass("RunService").Heartbeat:Connect(function() local args = { [1] = 46, [2] = 13352926142, [3] = "Bobux Blaster", [4] = "13352926142" } game:GetService("ReplicatedStorage"):WaitForChild("Import"):FireServer(unpack(args)) end) 		print("button pressed") 	end }) local Tab = Window:MakeTab({ 	Name = "Player", 	Icon = "rbxassetid://4483345998", 	PremiumOnly = false }) PlayerTab:AddSlider({ Name = "Walkspeed", Min = 16, Max = 500, Default = 16, Color = Color3.fromRGB(255,255,255), Increment = 1, ValueName = "WS", Callback = function(Value) game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value end }) local Tab = Window:MakeTab({ 	Name = "Other", 	Icon = "rbxassetid://4483345998", 	PremiumOnly = false }) Tab:AddButton({ 	Name = "Spam Taser Bullet(fe hold taser)", 	Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/bryntt-hub/Tase-Script/main/lua"))() 		print("button pressed") 	end }) Tab:AddButton({ 	Name = "Remove Axe", 	Callback = function() game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Workspace.Axe) 		print("button pressed") 	end }) Tab:AddButton({ 	Name = "Remove Crowbar", 	Callback = function() game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Workspace.Crowbar) 		print("button pressed") 	end }) Tab:AddButton({ 	Name = "Remove Keycard", 	Callback = function() game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Workspace.KeyCard) 		print("button pressed") 	end }) Tab:AddButton({ 	Name = "Remove Bag", 	Callback = function() game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Workspace.Bag) 		print("button pressed") 	end }) Tab:AddButton({ 	Name = "Remove Pickaxe", 	Callback = function() game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Workspace.Pickaxe) 		print("button pressed") 	end }) local Tab = Window:MakeTab({ 	Name = "Other TLK Gui's", 	Icon = "rbxassetid://4483345998", 	PremiumOnly = false }) Tab:AddButton({ 	Name = "Zeouron(My Friend's Gui)", 	Callback = function() loadstring(game:HttpGet('https://raw.githubusercontent.com/voidy434343/Zeouron-Mainiatic/main/Tlk%20prison%20obf.txt'))() 		print("button pressed") 	end }) Tab:AddButton({ 	Name = "Red Gui", 	Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/bryntt-hub/Red-Gui/main/Red"))() 		print("button pressed") 	end }) 
+local Tab = Window:MakeTab({
+	Name = "Teleports",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+Tab:AddButton({
+	Name = "Cafeteria",
 	Callback = function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(100.883865, 3.13551569, -49.0209465, -0.998895586, 3.62697122e-10, -0.0469854325, -2.67948819e-09, 1, 6.46844356e-08, 0.0469854325, 6.47388916e-08, -0.998895586)
+      		print("button pressed")
+  	end    
+})
+Tab:AddButton({
+	Name = "Bush",
+	Callback = function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(238.163147, 3.08828259, -107.131889, 0.78185904, -4.98227282e-09, 0.623455226, 4.57957228e-09, 1, 2.24826557e-09, -0.623455226, 1.09733156e-09, 0.78185904)
+      		print("button pressed")
+  	end    
+})
+Tab:AddButton({
+	Name = "Fugitive Roof",
+	Callback = function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(427.428741, 51.2895737, -86.9229279, 0.249306574, -6.88358384e-08, 0.968424618, 1.07991553e-08, 1, 6.8300146e-08, -0.968424618, -6.56950672e-09, 0.249306574)
+      		print("button pressed")
+  	end    
+})
+Tab:AddButton({
+	Name = "Burger shop",
+	Callback = function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(245.98877, 3.33612299, -598.105896, 0.00961896963, 8.21762569e-08, -0.999953747, -1.01416626e-08, 1, 8.20825008e-08, 0.999953747, 9.35164479e-09, 0.00961896963)
+      		print("button pressed")
+  	end    
+})
+Tab:AddButton({
+	Name = "Basement",
+	Callback = function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(457.890045, -5.52257156, -101.288002, -0.915338337, 2.02946229e-08, 0.402685642, 2.15490594e-08, 1, -1.4153535e-09, -0.402685642, 7.3819697e-09, -0.915338337)
+      		print("button pressed")
+  	end    
+})
+Tab:AddButton({
+	Name = "Secret room",
+	Callback = function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(26.0277443, 12.7413921, -132.815628, 0.467966288, 0, 0.883746326, -0, 1, -0, -0.883746326, 0, 0.467966288)
+      		print("button pressed")
+  	end    
+})
+Tab:AddButton({
+	Name = "Prison",
+	Callback = function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(81.3098907, 3.08828211, -103.173691, -0.368637025, 3.07116714e-08, 0.929573417, -8.77817925e-08, 1, -6.78497116e-08, -0.929573417, -1.06611537e-07, -0.368637025)
       		print("button pressed")
   	end    
 })
